@@ -1,6 +1,6 @@
 
 import { GoogleGenAI, Chat, GenerateContentResponse } from "@google/genai";
-import { PORTFOLIO_DATA } from '../constants';
+import { PORTFOLIO_DATA } from "../constants";
 
 // Construct a system prompt that gives the AI context about the portfolio owner
 const SYSTEM_INSTRUCTION = `
@@ -24,20 +24,36 @@ If asked about something not in the data, politely say you don't have that info 
 let chatSession: Chat | null = null;
 let ai: GoogleGenAI | null = null;
 
+/**
+ * Resolve the Gemini API key in a way that works for both Vite (browser) and Node.
+ * Vite exposes env vars that start with VITE_ on import.meta.env at build time.
+ */
+const resolveApiKey = (): string => {
+  // Vite build-time env (frontend)
+  const viteKey =
+    typeof import.meta !== "undefined" &&
+    (import.meta as any)?.env?.VITE_GEMINI_API_KEY;
+
+  if (viteKey) return viteKey as string;
+
+  // Node/runtime env (server or tests)
+  const nodeKey =
+    typeof process !== "undefined" && process?.env?.GEMINI_API_KEY;
+
+  if (nodeKey) return nodeKey;
+
+  throw new Error(
+    "Gemini API key missing. Add VITE_GEMINI_API_KEY to your .env.local (or GEMINI_API_KEY in Node)."
+  );
+};
+
 const getAIClient = (): GoogleGenAI => {
   if (!ai) {
-    // CRITICAL: Wrap environment variable access in a try-catch block
-    // to prevent runtime crashes in browsers that don't shim 'process'.
-    let apiKey = '';
-    try {
-      apiKey = process.env.API_KEY || '';
-    } catch (e) {
-      console.warn("process.env.API_KEY is not accessible in this environment.");
-    }
+    const apiKey = resolveApiKey();
     ai = new GoogleGenAI({ apiKey });
   }
   return ai;
-}
+};
 
 export const getChatSession = (): Chat => {
   const client = getAIClient();
