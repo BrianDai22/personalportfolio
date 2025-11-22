@@ -217,25 +217,49 @@ const App: React.FC = () => {
     }
   };
 
-  const handleContactClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    if (navigator.clipboard) {
-      navigator.clipboard.writeText(PORTFOLIO_DATA.socials.email).then(() => {
-        setEmailCopied(true);
-        setTimeout(() => setEmailCopied(false), 3000);
-      });
+  const copyEmailToClipboard = async (): Promise<boolean> => {
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(PORTFOLIO_DATA.socials.email);
+        return true;
+      }
+    } catch (err) {
+      console.warn("Clipboard API failed, falling back", err);
     }
-    window.location.href = `mailto:${PORTFOLIO_DATA.socials.email}`;
+
+    // Fallback: temporary textarea selection
+    try {
+      const textarea = document.createElement('textarea');
+      textarea.value = PORTFOLIO_DATA.socials.email;
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
+      textarea.select();
+      const success = document.execCommand('copy');
+      document.body.removeChild(textarea);
+      return success;
+    } catch (err) {
+      console.error('Clipboard fallback failed', err);
+      return false;
+    }
   };
 
-  const handleHeroEmailClick = (e: React.MouseEvent) => {
+  const handleContactClick = async (e: React.MouseEvent) => {
     e.preventDefault();
-    if (navigator.clipboard) {
-      navigator.clipboard.writeText(PORTFOLIO_DATA.socials.email);
+    const copied = await copyEmailToClipboard();
+    if (copied) {
+      setEmailCopied(true);
+      setTimeout(() => setEmailCopied(false), 3000);
     }
-    setHeroEmailCopied(true);
-    setTimeout(() => setHeroEmailCopied(false), 2000);
-    window.location.href = `mailto:${PORTFOLIO_DATA.socials.email}`;
+  };
+
+  const handleHeroEmailClick = async (e: React.MouseEvent) => {
+    e.preventDefault();
+    const copied = await copyEmailToClipboard();
+    if (copied) {
+      setHeroEmailCopied(true);
+      setTimeout(() => setHeroEmailCopied(false), 2000);
+    }
   };
 
   const handleDownloadResume = (e: React.MouseEvent) => {
