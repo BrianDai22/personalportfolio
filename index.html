@@ -1,0 +1,269 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Primary Meta Tags -->
+    <title>Brian Dai | AI Architect & Full Stack Engineer</title>
+    <meta name="title" content="Brian Dai | AI Architect & Full Stack Engineer">
+    <meta name="description" content="Portfolio of Brian Dai - Merging quantitative finance concepts with full-stack engineering. Specialized in AI agents, algorithmic trading, and high-performance web systems.">
+    <meta name="keywords" content="Brian Dai, Full Stack Engineer, AI Architect, React, TypeScript, Python, Quantitative Finance, Portfolio">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="language" content="English">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://briandai.com/">
+    <meta property="og:title" content="Brian Dai | AI Architect & Full Stack Engineer">
+    <meta property="og:description" content="Portfolio of Brian Dai - Merging quantitative finance concepts with full-stack engineering. Specialized in AI agents, algorithmic trading, and high-performance web systems.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1200&auto=format&fit=crop">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://briandai.com/">
+    <meta property="twitter:title" content="Brian Dai | AI Architect & Full Stack Engineer">
+    <meta property="twitter:description" content="Portfolio of Brian Dai - Merging quantitative finance concepts with full-stack engineering. Specialized in AI agents, algorithmic trading, and high-performance web systems.">
+    <meta property="twitter:image" content="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1200&auto=format&fit=crop">
+
+    <!-- Custom Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230a0a0a'/><path d='M20 20 L40 50 L20 80' fill='none' stroke='%23ccff00' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'/><rect x='50' y='70' width='30' height='10' fill='%23ccff00'/></svg>">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Krona+One&family=Montserrat:ital,wght@0,100..900;1,100..900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Montserrat', 'sans-serif'],
+              display: ['Krona One', 'sans-serif'],
+              mono: ['JetBrains Mono', 'monospace'],
+            },
+            colors: {
+              base: '#050505', // Darker base for contrast
+              surface: '#121212',
+              accent: '#ccff00', // Acid Lime
+              secondary: '#6b7280',
+              muted: '#262626'
+            },
+            animation: {
+              'spin-slow': 'spin 12s linear infinite',
+              'float': 'float 8s ease-in-out infinite',
+              'pulse-glow': 'pulseGlow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'glitch': 'glitch 1s linear infinite',
+              'shimmer': 'shimmer 2s linear infinite',
+            },
+            keyframes: {
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-15px)' },
+              },
+              pulseGlow: {
+                '0%, 100%': { opacity: 0.3, transform: 'scale(1)' },
+                '50%': { opacity: 0.6, transform: 'scale(1.02)' },
+              },
+              glitch: {
+                '2%, 64%': { transform: 'translate(2px,0) skew(0deg)' },
+                '4%, 60%': { transform: 'translate(-2px,0) skew(0deg)' },
+                '62%': { transform: 'translate(0,0) skew(5deg)' },
+              },
+              shimmer: {
+                'from': { backgroundPosition: '0 0' },
+                'to': { backgroundPosition: '-200% 0' }
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      /* 1. GLOBAL PHYSICS & TEXTURE */
+      html {
+        scroll-padding-top: 100px;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      
+      ::-webkit-scrollbar {
+        display: none;
+      }
+
+      body {
+        background-color: #050505;
+        color: #e5e5e5;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        min-height: 100%;
+      }
+
+      /* Noise Texture for Film Grain Feel */
+      .noise-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 9000;
+        opacity: 0.03;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      }
+
+      .glass-panel {
+        background: rgba(18, 18, 18, 0.7);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .text-glow {
+        text-shadow: 0 0 20px rgba(204, 255, 0, 0.3);
+      }
+      
+      .font-outline-2 {
+        -webkit-text-stroke: 1px #ccff00;
+        color: transparent;
+      }
+
+      /* 2. ANIMATION UTILITIES */
+      
+      /* Exponential Ease - The "Million Dollar" curve */
+      .ease-expo {
+        transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+      }
+
+      /* Scroll Reveal System */
+      .reveal {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 1.2s cubic-bezier(0.19, 1, 0.22, 1), transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+        will-change: opacity, transform;
+      }
+      
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Stagger Delays */
+      .delay-100 { transition-delay: 100ms; }
+      .delay-200 { transition-delay: 200ms; }
+      .delay-300 { transition-delay: 300ms; }
+      .delay-400 { transition-delay: 400ms; }
+      .delay-500 { transition-delay: 500ms; }
+      .delay-700 { transition-delay: 700ms; }
+
+      /* Nav Entrance Animation */
+      @keyframes fadeInDown {
+        from { opacity: 0; transform: translateY(-20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .animate-fade-in-down {
+        animation: fadeInDown 0.8s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+        opacity: 0;
+      }
+
+      /* Glitch Text Effect */
+      .glitch-wrapper {
+        position: relative;
+        display: inline-block;
+      }
+      
+      .glitch-text::before,
+      .glitch-text::after {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.8;
+      }
+
+      .glitch-text::before {
+        left: 2px;
+        text-shadow: -1px 0 #ff00c1;
+        clip: rect(44px, 450px, 56px, 0);
+        animation: glitch-anim 4s infinite linear alternate-reverse;
+      }
+
+      .glitch-text::after {
+        left: -2px;
+        text-shadow: -1px 0 #00fff9;
+        clip: rect(44px, 450px, 56px, 0);
+        animation: glitch-anim2 4s infinite linear alternate-reverse;
+      }
+
+      @keyframes glitch-anim {
+        0% { clip: rect(13px, 9999px, 88px, 0); }
+        5% { clip: rect(62px, 9999px, 29px, 0); }
+        10% { clip: rect(8px, 9999px, 15px, 0); }
+        15% { clip: rect(47px, 9999px, 5px, 0); }
+        20% { clip: rect(3px, 9999px, 79px, 0); }
+        25% { clip: rect(32px, 9999px, 30px, 0); }
+        30% { clip: rect(86px, 9999px, 92px, 0); }
+        35% { clip: rect(10px, 9999px, 66px, 0); }
+        40% { clip: rect(55px, 9999px, 18px, 0); }
+        45% { clip: rect(28px, 9999px, 14px, 0); }
+        50% { clip: rect(63px, 9999px, 96px, 0); }
+        55% { clip: rect(15px, 9999px, 72px, 0); }
+        60% { clip: rect(78px, 9999px, 48px, 0); }
+        65% { clip: rect(8px, 9999px, 26px, 0); }
+        70% { clip: rect(42px, 9999px, 85px, 0); }
+        75% { clip: rect(95px, 9999px, 3px, 0); }
+        80% { clip: rect(22px, 9999px, 58px, 0); }
+        85% { clip: rect(59px, 9999px, 90px, 0); }
+        90% { clip: rect(36px, 9999px, 12px, 0); }
+        95% { clip: rect(4px, 9999px, 68px, 0); }
+        100% { clip: rect(65px, 9999px, 35px, 0); }
+      }
+      
+      @keyframes glitch-anim2 {
+        0% { clip: rect(65px, 9999px, 35px, 0); }
+        100% { clip: rect(13px, 9999px, 88px, 0); }
+      }
+
+      /* Scanline Animation */
+      .scanlines {
+        background: linear-gradient(
+          to bottom,
+          rgba(255,255,255,0),
+          rgba(255,255,255,0) 50%,
+          rgba(0,0,0,0.08) 50%,
+          rgba(0,0,0,0.08)
+        );
+        background-size: 100% 3px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        pointer-events: none;
+        z-index: 9001;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react-dom/client": "https://aistudiocdn.com/react-dom@^19.2.0/client",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
