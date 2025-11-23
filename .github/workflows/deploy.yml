@@ -29,6 +29,8 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build
+        env:
+          VITE_GEMINI_PROXY_URL: "https://u77ircvzu9.execute-api.us-east-1.amazonaws.com/gemini"
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
