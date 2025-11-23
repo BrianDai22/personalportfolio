@@ -1,11 +1,9 @@
 
 import { PortfolioData } from './types';
-
-// Using high-quality remote assets to ensure the app works without missing local files
-const ufcImg = "https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?q=80&w=1600&auto=format&fit=crop"; // Dramatic dark arena
-const surveilensImg = "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1600&auto=format&fit=crop"; // Cyberpunk security HUD style
-const codeDuelsImg = "https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=1600&auto=format&fit=crop"; // Dark code editor
-const aithleteImg = "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1600&auto=format&fit=crop"; // Gym/Tech aesthetic
+import ufcImg from '@/images/ufcfightpredictor.png';
+import surveilensImg from '@/images/surveilens.jpeg';
+import codeDuelsImg from '@/images/codeduels.png';
+import aithleteImg from '@/images/aithlete.png';
 
 export const PORTFOLIO_DATA: PortfolioData = {
   name: "Brian Dai",

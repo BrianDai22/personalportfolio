@@ -1,0 +1,32 @@
+{
+  "ResponseHeadersPolicyConfig": {
+    "Name": "portfolio-security-headers",
+    "Comment": "Security headers for SPA portfolio",
+    "CorsConfig": {
+      "CorsRules": []
+    },
+    "SecurityHeadersConfig": {
+      "StrictTransportSecurity": {
+        "Override": true,
+        "IncludeSubdomains": true,
+        "Preload": true,
+        "AccessControlMaxAgeSec": 63072000
+      },
+      "ContentTypeOptions": { "Override": true },
+      "ReferrerPolicy": {
+        "Override": true,
+        "ReferrerPolicy": "strict-origin-when-cross-origin"
+      },
+      "FrameOptions": { "Override": true, "FrameOption": "DENY" },
+      "XSSProtection": {
+        "Override": true,
+        "Protection": true,
+        "ModeBlock": true
+      },
+      "ContentSecurityPolicy": {
+        "Override": true,
+        "ContentSecurityPolicy": "default-src 'self'; img-src 'self' data: https://images.unsplash.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self'; connect-src 'self' https://api.example.com; base-uri 'self'; form-action 'self'"
+      }
+    }
+  }
+}
