@@ -115,9 +115,10 @@ export const AIChat: React.FC<AIChatProps> = ({ onClose }) => {
         ));
       }
     } catch (error) {
+      const errorText = error instanceof Error ? error.message : "Error: Connection interrupted.";
       setMessages(prev => prev.map(msg => 
         msg.id === modelMsgId 
-          ? { ...msg, text: "Error: Connection interrupted.", isLoading: false } 
+          ? { ...msg, text: errorText, isLoading: false } 
           : msg
       ));
     } finally {
