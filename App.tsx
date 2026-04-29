@@ -1,9 +1,8 @@
 
 import React, { useState, useEffect, useRef } from 'react';
-import { Github, Linkedin, Mail, Terminal, ArrowRight, Cpu, Code, Database, MessageSquare, GraduationCap, Users, Hash, Check, Menu, X, FileDown, Loader2 } from 'lucide-react';
+import { Github, Linkedin, Mail, Terminal, ArrowRight, Cpu, Code, Database, MessageSquare, GraduationCap, Users, Hash, Check, Menu, X } from 'lucide-react';
 import { PORTFOLIO_DATA } from './constants';
 import { AIChat } from './components/AIChat';
-import resumePdf from './resume.pdf';
 
 
 // Icon mapping for skills
@@ -143,7 +142,6 @@ const App: React.FC = () => {
   const [emailCopied, setEmailCopied] = useState(false);
   const [heroEmailCopied, setHeroEmailCopied] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [isDownloading, setIsDownloading] = useState(false);
 
   // Scroll Spy & Reveal Observer
   useEffect(() => {
@@ -260,21 +258,6 @@ const App: React.FC = () => {
     }
   };
 
-  const handleDownloadResume = (e: React.MouseEvent) => {
-    e.preventDefault();
-    setIsDownloading(true);
-
-    setTimeout(() => {
-      const link = document.createElement('a');
-      link.href = resumePdf;
-      link.download = 'Brian_Dai_Resume.pdf';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      setIsDownloading(false);
-    }, 500);
-  };
-
   return (
     <>
       {isLoading && <Preloader onComplete={() => setIsLoading(false)} />}
@@ -389,20 +372,6 @@ const App: React.FC = () => {
                   <div className="absolute inset-0 bg-black transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500 delay-75 ease-expo -z-10"></div>
                 </a>
                 
-                <button 
-                  onClick={handleDownloadResume}
-                  disabled={isDownloading}
-                  className="group px-8 py-4 border border-white/20 text-white font-display font-bold uppercase tracking-wide hover:border-accent hover:text-accent transition-all duration-500 ease-expo text-center flex items-center justify-center gap-2"
-                >
-                  {isDownloading ? (
-                    <Loader2 size={18} className="animate-spin" />
-                  ) : (
-                    <>
-                        <span>CV</span>
-                        <FileDown size={18} className="group-hover:-translate-y-1 transition-transform duration-500 ease-expo" />
-                    </>
-                  )}
-                </button>
               </div>
 
               <div className="flex gap-6 pt-8 text-gray-500 reveal delay-400">

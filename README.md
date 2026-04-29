@@ -5,7 +5,6 @@ Vite + React single-page portfolio with AI chat. Target deployment is AWS S3 + C
 ## Features
 - Cyber/tech visual theme, scroll-spy navigation, AI chat assistant
 - Projects/skills/experience pulled from `constants.ts`
-- Resume download served as a static asset (no inline base64)
 
 ## Getting Started (local)
 ```bash
@@ -52,4 +51,3 @@ Output goes to `dist/`.
 
 ## Notes for Recruiters / Reviewers
 - No secrets ship to the browser; the Gemini key must live in the proxy.
-- Resume downloads from `resume.pdf` bundled in the app (no inline base64).
